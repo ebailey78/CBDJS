@@ -1,0 +1,222 @@
+/* Modern CSS for Cutting Board Designer */
+
+:root {
+  --primary-color: #2563eb;
+  --secondary-color: #475569;
+  --background-color: #ffffff;
+  --text-color: #1f2937;
+  --border-color: #e5e7eb;
+  --success-color: #22c55e;
+  --error-color: #ef4444;
+  --input-bg: #f9fafb;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #1f2937;
+    --text-color: #f9fafb;
+    --border-color: #4b5563;
+    --input-bg: #374151;
+  }
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.5;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Grid Layout */
+.main-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+/* Controls Section */
+.controls-section {
+  background: var(--input-bg);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Input Styles */
+input[type="number"],
+input[type="text"],
+input[type="color"] {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--background-color);
+  color: var(--text-color);
+  margin-bottom: 10px;
+}
+
+input[type="color"] {
+  height: 40px;
+  padding: 2px;
+}
+
+/* Button Styles */
+button {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background: color-mix(in srgb, var(--primary-color) 90%, black);
+}
+
+button.secondary {
+  background: var(--secondary-color);
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid var(--border-color);
+}
+
+th {
+  background: var(--secondary-color);
+  color: white;
+}
+
+/* SVG Preview */
+.preview-section {
+  background: var(--input-bg);
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+}
+
+.preview-section svg {
+  max-width: 100%;
+  height: auto;
+  background: white;
+  border-radius: 4px;
+}
+
+/* Notification System */
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 12px 24px;
+  border-radius: 4px;
+  color: white;
+  animation: slideIn 0.3s ease-out;
+  z-index: 1000;
+}
+
+.notification.error {
+  background: var(--error-color);
+}
+
+.notification.success {
+  background: var(--success-color);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  body {
+    padding: 10px;
+  }
+}
+
+/* Wood Selection */
+.wood-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.wood-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+/* Layer Controls */
+.layer-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.layer-controls button {
+  padding: 4px 8px;
+  font-size: 0.9em;
+}
+
+/* Tooltips */
+[data-tooltip] {
+  position: relative;
+  cursor: help;
+}
+
+[data-tooltip]:before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 8px;
+  background: var(--secondary-color);
+  color: white;
+  font-size: 0.8em;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.2s;
+}
+
+[data-tooltip]:hover:before {
+  opacity: 1;
+  visibility: visible;
+} 

@@ -1,0 +1,19 @@
+{
+  "name": "cutting-board-designer",
+  "version": "3.0.0",
+  "description": "A modern tool for designing end-grain cutting boards",
+  "main": "js/app.js",
+  "type": "module",
+  "scripts": {
+    "start": "npx http-server -o -c-1",
+    "dev": "npx vite",
+    "build": "npx vite build",
+    "preview": "npx vite preview"
+  },
+  "author": "",
+  "license": "GPL-2.0",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "vite": "^4.4.9"
+  }
+} 
